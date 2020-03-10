@@ -98,8 +98,9 @@ ifeq (,$(wildcard README.header.md))
 	rm -f README.md
 else
 	cat README.header.md > README.md
+	echo "" >> README.md
 endif
-	terraform-docs . >> README.md
+	terraform-docs markdown . >> README.md
 	cat README.md
 
 
