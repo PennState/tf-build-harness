@@ -13,6 +13,7 @@ ENV RUBY_VERSION=2.4.9
 ENV TERRATEST_LOG_PARSER_VERSION=0.23.4
 ENV TERRAFORM_DOCS_VERSION=v0.8.1
 ENV AWS_IAM_AUTHENTICATOR="1.15.10/2020-02-22"
+ENV KUBECTL_VERSION=v1.17.4
 
 ENV TF_BUILD_HARNESS_PATH=/tf-build-harness
 
@@ -26,6 +27,12 @@ ENV PATH=${TF_BUILD_HARNESS_PATH}/bin:$PATH
 RUN apk update \
  && apk upgrade \
  && apk add curl gnupg go git unzip bash libssl1.1 libcrypto1.1 libffi-dev build-base linux-headers zlib-dev openssl-dev readline-dev openssh-client coreutils
+
+# kubectl
+
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
+ && chmod +x ./kubectl \
+ && mv ./kubectl /usr/local/bin
 
 # aws-iam-authenticator
 

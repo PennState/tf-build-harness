@@ -92,3 +92,4 @@ variables. Tests will be run in `us-east-1`, so your fixtures should specify
 * terraform-docs: v0.8.1
 * terratest_log_parser: 0.23.4
 * aws-iam-authenticator: 1.15.10/2020-02-22
+* kubectl: v1.17.4
