@@ -86,8 +86,9 @@ variables. Tests will be run in `us-east-1`, so your fixtures should specify
 
 # Versions
 
-* Terraform: 0.12.6
+* Terraform: 0.12.24
 * Go: 1.12.x
-* Ruby: 2.4.6
-* terraform-docs: 0.6.0
-* terratest_log_parser: 0.17.5
+* Ruby: 2.4.9
+* terraform-docs: v0.8.1
+* terratest_log_parser: 0.23.4
+* aws-iam-authenticator: 1.15.10/2020-02-22
