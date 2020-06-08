@@ -9,7 +9,6 @@ RUN go get github.com/hashicorp/terraform-config-inspect \
 FROM alpine:3.11
 
 ENV TERRAFORM_VERSION=0.12.26
-ENV RUBY_VERSION=2.4.9
 ENV TERRATEST_LOG_PARSER_VERSION=0.23.4
 ENV TERRAFORM_DOCS_VERSION=v0.8.1
 ENV AWS_IAM_AUTHENTICATOR="1.15.10/2020-02-22"
@@ -60,24 +59,6 @@ RUN curl -OsL https://github.com/segmentio/terraform-docs/releases/download/${TE
 
 # gopath
 ENV GOPATH /workdir
-
-# rbenv
-ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
-ENV RBENV_ROOT /usr/local/rbenv
-ENV RUBY_CONFIGURE_OPTS --disable-install-doc
-
-RUN git clone https://github.com/rbenv/rbenv.git /usr/local/rbenv \
- && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh \
- && mkdir -p "$(rbenv root)"/plugins \
- && git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-
-# ruby
-RUN rbenv install ${RUBY_VERSION} \
- && rbenv rehash \
- && rbenv global ${RUBY_VERSION}
-
-# bundler
-RUN gem update --system && gem install --force bundler
 
 # terratest_log_parser
 RUN curl -Os \
