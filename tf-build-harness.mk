@@ -44,7 +44,7 @@ help:
 
 .PHONY: .adduser
 .adduser:
-	@adduser -D -u $(DOCKER_UID) tfbuild
+	@adduser -D -u $(DOCKER_UID) tfbuild || adduser -D tfbuild
 
 .PHONY: .lint 
 .lint:
