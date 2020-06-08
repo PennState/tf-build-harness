@@ -65,7 +65,7 @@ ifeq (,$(wildcard .kitchen.yml))
 	@echo "No .kitchen.yml, skipping kitchen-terraform tests";
 else
 	bundle install >/dev/null
-	bundle exec kitchen test || ( cat .kitchen/logs/*.log ; ret=$$? ; $(MAKE) .kitchen-destroy ; exit $$ret)
+	bundle exec kitchen test || ( cat .kitchen/logs/*.log ; ret=$$? ; make .kitchen-destroy ; exit $$ret)
 endif
 
 .PHONY: .kitchen-destroy
@@ -110,7 +110,7 @@ ifdef CI
 	$(MAKE) .$@
 else
 	mkdir -p $(BUILD_CACHE)
-	@$(DOCKER) sh -c "$(MAKE) .adduser && su tfbuild -c '$(MAKE) .$@'"
+	@$(DOCKER) sh -c "make .adduser && su tfbuild -c 'make .$@'"
 endif
 
 # vim: syntax=make
