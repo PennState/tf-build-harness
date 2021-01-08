@@ -34,7 +34,7 @@ DOCKER = echo "=== Running in docker container $(TF_BUILD_HARNESS_IMAGE)"; \
 	-e GOPATH=/cache/gopath \
 	$(TF_BUILD_HARNESS_IMAGE) 
 
-DOCKER_TARGETS := docs test lint get validate kitchen-test kitchen-destroy terratest
+DOCKER_TARGETS := docs test lint get validate terratest
 .PHONY: $(DOCKER_TARGETS)
 
 .PHONY: help
@@ -59,6 +59,7 @@ help:
 	$(TERRAFORM) init -get-plugins -backend=false -input=false >/dev/null
 	$(TERRAFORM) init -get -backend=false -input=false >/dev/null
 
+<<<<<<< HEAD
 .PHONY: .kitchen-test
 .kitchen-test:
 ifeq (,$(wildcard .kitchen.yml))
@@ -77,6 +78,8 @@ else
 	bundle exec kitchen destroy
 endif
 
+=======
+>>>>>>> 74c0406 (remove kitchen/ruby dependencies)
 .PHONY: .terratest
 .terratest:
 ifeq (,$(wildcard test/*.go))
@@ -87,10 +90,10 @@ endif
 
 .PHONY: clean
 clean:
-	rm -rf .build-cache .terraform .kitchen terraform.tfstate.d .tf-build-harness.mk
+	rm -rf .build-cache .terraform terraform.tfstate.d .tf-build-harness.mk
 
 .PHONY: .test
-.test: .kitchen-test .terratest
+.test: .terratest
 
 .PHONY: .docs
 .docs:

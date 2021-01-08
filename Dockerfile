@@ -5,7 +5,6 @@ ENV GO111MODULE=on
 RUN go get github.com/hashicorp/terraform-config-inspect \
  && cp `which terraform-config-inspect` /
 
-
 FROM alpine:3.11
 
 ENV TERRAFORM_VERSION=0.12.26
