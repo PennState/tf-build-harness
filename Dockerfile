@@ -1,11 +1,11 @@
-FROM golang:1.13-alpine as gobuilder
+FROM golang:alpine as gobuilder
 
 RUN apk add git
 ENV GO111MODULE=on
 RUN go get github.com/hashicorp/terraform-config-inspect \
  && cp `which terraform-config-inspect` /
 
-FROM alpine:3.11
+FROM alpine:latest
 
 ENV TERRAFORM_VERSION=0.12.26
 ENV TERRATEST_LOG_PARSER_VERSION=0.23.4
