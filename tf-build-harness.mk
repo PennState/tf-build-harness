@@ -59,27 +59,6 @@ help:
 	$(TERRAFORM) init -get-plugins -backend=false -input=false >/dev/null
 	$(TERRAFORM) init -get -backend=false -input=false >/dev/null
 
-<<<<<<< HEAD
-.PHONY: .kitchen-test
-.kitchen-test:
-ifeq (,$(wildcard .kitchen.yml))
-	@echo "No .kitchen.yml, skipping kitchen-terraform tests";
-else
-	bundle install >/dev/null
-	bundle exec kitchen test || ( cat .kitchen/logs/*.log ; ret=$$? ; make .kitchen-destroy ; exit $$ret)
-endif
-
-.PHONY: .kitchen-destroy
-.kitchen-destroy:
-ifeq (,$(wildcard .kitchen.yml))
-	@echo "No .kitchen.yml, skipping kitchen-terraform tests"
-else
-	bundle install >/dev/null
-	bundle exec kitchen destroy
-endif
-
-=======
->>>>>>> 74c0406 (remove kitchen/ruby dependencies)
 .PHONY: .terratest
 .terratest:
 ifeq (,$(wildcard test/*.go))
