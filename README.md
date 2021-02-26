@@ -1,4 +1,4 @@
-![](https://img.shields.io/docker/build/acobaugh/terraform-test.svg)
+[![Docker Repository on Quay](https://quay.io/repository/pennstate/tf-build-harness/status "Docker Repository on Quay")](https://quay.io/repository/pennstate/tf-build-harness)
 
 # tf-build-harness
 
